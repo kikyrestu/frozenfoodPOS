@@ -6,7 +6,7 @@ services:
     container_name: frozen_pos_web
     restart: always
     ports:
-      - "8000:80"
+      - "8085:80"
     volumes:
       - .:/var/www/html
       - uploads_data:/var/www/html/uploads
