@@ -21,7 +21,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: fun_frozen_food
     ports:
-      - "3307:3306"
+      - "3056:3306"
     volumes:
       - db_data:/var/lib/mysql
       # Auto-import SQL saat build pertama kali
