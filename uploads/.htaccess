@@ -1,0 +1,14 @@
+# Prevent PHP execution in uploads directory
+<FilesMatch "\.(?:php[0-9]?|pht|phtml|phar|phps|cgi|pl|py|sh|bash)$">
+    Require all denied
+</FilesMatch>
+
+# Only allow image files
+<FilesMatch "\.(?:jpe?g|png|webp|gif|ico|svg)$">
+    Require all granted
+</FilesMatch>
+
+# Disable script execution
+php_flag engine off
+Options -ExecCGI
+AddHandler cgi-script .php .phtml .php3 .php4 .php5 .php7 .phps .phar .pl .py .cgi .sh
