@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: frozen_pos_web
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - uploads_data:/var/www/html/uploads
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: frozen_pos_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fun_frozen_food
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      # Auto-import SQL saat build pertama kali
+      - ./fun_frozen_food.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  db_data:
+  uploads_data:
