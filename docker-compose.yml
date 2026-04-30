@@ -10,6 +10,11 @@ services:
     volumes:
       - .:/var/www/html
       - uploads_data:/var/www/html/uploads
+    environment:
+      DB_HOST: db
+      DB_NAME: fun_frozen_food
+      DB_USER: root
+      DB_PASS: root
     depends_on:
       - db
 
